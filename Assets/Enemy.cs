@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    private double maxHealth;
+    public double currentHealth;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
+        this.currentHealth = this.maxHealth;
         
     }
 
@@ -14,5 +21,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public void takeDamage(double damage)
+    {
+        this.currentHealth -= damage;
     }
 }

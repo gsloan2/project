@@ -30,13 +30,15 @@ public class PlayerMovement : MonoBehaviour
             dir.x = -1;
             animator.SetFloat("X", -1);
             animator.SetFloat("Y", 0);
+            spriteRenderer.flipX = true;
+
         }
         else if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
             animator.SetFloat("X", 1);
             animator.SetFloat("Y", 0);
-
+            spriteRenderer.flipX = false;
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -44,12 +46,24 @@ public class PlayerMovement : MonoBehaviour
             dir.y = 1;
             animator.SetFloat("X", 0);
             animator.SetFloat("Y", 1);
+            spriteRenderer.flipX = false;
+            if (Input.GetKey(KeyCode.A))
+            {
+                spriteRenderer.flipX = true;
+            }
+            else spriteRenderer.flipX = false;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             dir.y = -1;
             animator.SetFloat("X", 0);
             animator.SetFloat("Y", -1);
+            if (Input.GetKey(KeyCode.A))
+            {
+                spriteRenderer.flipX = true;
+            }
+            else spriteRenderer.flipX = false;
+
         }
 
         dir.Normalize();
