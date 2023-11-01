@@ -28,4 +28,9 @@ public class Enemy : MonoBehaviour
     {
         this.currentHealth -= damage;
     }
+
+    public void applyDamage()
+    {
+
+    }
 }

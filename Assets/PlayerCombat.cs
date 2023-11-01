@@ -25,15 +25,27 @@ public class PlayerCombat : MonoBehaviour
 
     void Attack()
     {
-
-        
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, range, enemyLayer);
 
-        foreach(Collider2D enemy in enemiesHit)
+        foreach (Collider2D enemy in enemiesHit)
         {
             Debug.Log("Hitting " + enemy.name);
+
+            Rigidbody2D enemyRb = enemy.GetComponent<Rigidbody2D>();
+            EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+            if (enemyRb != null && enemyAI != null)
+            {
+                Vector2 knockbackDirection = (enemy.transform.position - transform.position).normalized;
+                float knockbackForce = 7f;
+                enemyRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+                // Apply knockback cooldown to the enemy
+                enemyAI.ApplyKnockback();
+            }
         }
     }
+
+
 
     private void OnDrawGizmosSelected()
     {

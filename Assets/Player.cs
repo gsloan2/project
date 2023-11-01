@@ -9,9 +9,15 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     Transform playerPos;
+
+    private void Awake()
+    {
+        Player.Instance = this;
+        playerPos = GetComponent<Transform>();
+    }
     void Start()
     {
-            
+        
     }
 
     // Update is called once per frame

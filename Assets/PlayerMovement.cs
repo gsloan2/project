@@ -13,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 dir;
 
+    public static PlayerMovement Instance { get; private set; }
+
+    private void Awake()
+    {
+        PlayerMovement.Instance = this;
+    }
 
     private void Start()
     {
@@ -73,5 +79,8 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-
+    public Vector2 getDirection()
+    {
+        return dir;
+    }
 }
